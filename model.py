@@ -19,6 +19,15 @@ from dotenv import load_dotenv
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+st.title('Ask me')
+
+# Add iframe code with CSS styling for alignment
+st.write("""
+<div style="float: right; width: 70%;">
+    <iframe src="https://www.chatbase.co/chatbot-iframe/1fKcG2dmj7pMK0VHkV1xF" title="Chatbot" width="100%" style="height: 100%; min-height: 700px" frameborder="0"></iframe>
+</div>
+""", unsafe_allow_html=True)
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -145,19 +154,10 @@ def textReader():
     st.sidebar.write('[About Us](#about)')
     st.markdown('---')
 
-   import streamlit as st
 
-st.title('Embedded Chatbot')
-
-# Add iframe code with CSS styling for alignment
-st.write("""
-<div style="float: right; width: 70%;">
-    <iframe src="https://www.chatbase.co/chatbot-iframe/1fKcG2dmj7pMK0VHkV1xF" title="Chatbot" width="100%" style="height: 100%; min-height: 700px" frameborder="0"></iframe>
-</div>
-""", unsafe_allow_html=True)
 
     
-    st.write('Code Rangers Team© 2024')
+st.write('Code Rangers Team© 2024')
 
 # Run the app
 if __name__ == '__main__':

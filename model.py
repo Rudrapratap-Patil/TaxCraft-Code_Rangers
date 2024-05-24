@@ -160,5 +160,5 @@ def textReader():
 st.write('Code Rangers Team© 2024')
 
 # Run the app
-if _name_ == '_main_':
+if __name__ == '__main__':
     textReader()

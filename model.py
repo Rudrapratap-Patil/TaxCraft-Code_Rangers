@@ -120,15 +120,12 @@ def textReader():
                 st.success("Done")
                 st.write("Reply: ", answer)
 
-    st.header('Upload Your Tax Document')
-    uploaded_file = st.file_uploader('Choose a file', type=['pdf', 'docx'])
-
-    if uploaded_file is not None:
-        extracted_text = extract_text_from_pdf(uploaded_file)
+        st.header('Summary and Analysis')
+        extracted_text = extract_text_from_pdf(uploaded_files[0])
         summarized_text = summarize_text_with_gpt3(extracted_text)
         st.write('Summary of your document:', summarized_text)
         
-        tables = extract_tables_with_pdfplumber(uploaded_file)
+        tables = extract_tables_with_pdfplumber(uploaded_files[0])
         st.header('Extracted Tables')
         for i, table in enumerate(tables):
             st.write(f'Table {i+1}')
@@ -147,7 +144,12 @@ def textReader():
     st.sidebar.write('[Investment Suggestions](#suggestions)')
     st.sidebar.write('[About Us](#about)')
     st.markdown('---')
-    st.write('Core Dump Team© 2024')
+
+    st.write("""
+<iframe src="https://www.chatbase.co/chatbot-iframe/1fKcG2dmj7pMK0VHkV1xF" title="Chatbot" width="100%" style="height: 100%; min-height: 700px" frameborder="0"></iframe>
+""", unsafe_allow_html=True)
+    
+    st.write('Code Rangers Team© 2024')
 
 # Run the app
 if __name__ == '__main__':

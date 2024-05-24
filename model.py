@@ -145,9 +145,17 @@ def textReader():
     st.sidebar.write('[About Us](#about)')
     st.markdown('---')
 
-    st.write("""
-<iframe src="https://www.chatbase.co/chatbot-iframe/1fKcG2dmj7pMK0VHkV1xF" title="Chatbot" width="100%" style="height: 100%; min-height: 700px" frameborder="0"></iframe>
+   import streamlit as st
+
+st.title('Embedded Chatbot')
+
+# Add iframe code with CSS styling for alignment
+st.write("""
+<div style="float: right; width: 70%;">
+    <iframe src="https://www.chatbase.co/chatbot-iframe/1fKcG2dmj7pMK0VHkV1xF" title="Chatbot" width="100%" style="height: 100%; min-height: 700px" frameborder="0"></iframe>
+</div>
 """, unsafe_allow_html=True)
+
     
     st.write('Code Rangers Team© 2024')
 

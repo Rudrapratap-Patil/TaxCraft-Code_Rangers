@@ -1,6 +1,5 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-from pptx import Presentation
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 import asyncio
@@ -25,17 +24,6 @@ def get_pdf_text(pdf_docs):
         pdf_reader = PdfReader(pdf)
         for page in pdf_reader.pages:
             text += page.extract_text()
-    return text
-
-# Function to extract text from PPTX files
-def get_pptx_text(pptx_docs):
-    text = ""
-    for pptx in pptx_docs:
-        presentation = Presentation(pptx)
-        for slide in presentation.slides:
-            for shape in slide.shapes:
-                if hasattr(shape, "text"):
-                    text += shape.text + "\n"
     return text
 
 # Function to split text into chunks
@@ -501,7 +489,7 @@ def main():
             pdf_files = [file for file in uploaded_files if file.type == "application/pdf"]
             pptx_files = [file for file in uploaded_files if file.type == "application/vnd.openxmlformats-officedocument.presentationml.presentation"]
                 
-            raw_text = get_pdf_text(pdf_files) + get_pptx_text(pptx_files)
+            raw_text = get_pdf_text(pdf_files)
             text_chunks = get_text_chunks(raw_text)
             get_vector_store(text_chunks)
             st.success("Done")
@@ -518,5 +506,5 @@ def main():
 
     st.write("Created with ❤ by CODE RANGERS")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
